@@ -20,7 +20,7 @@ resource "aws_cloudwatch_event_target" "compliance_event" {
       status   = "$.detail.newEvaluationResult.complianceType"
     }
 
-    input_template = "\"AWS Config Compliance Change: Rule <rule> triggered for resource <resource>.  New Status: <status>.\""
+    input_template = jsonencode("AWS Config Compliance Change: Rule <rule> triggered for resource <resource>.  New Status: <status>.")
   }
 }
 
@@ -41,7 +41,7 @@ resource "aws_cloudwatch_event_target" "config_event" {
       parameters = "$.detail.requestParameters"
     }
 
-    input_template = "\"AWS Config Change: Event <event> with request parameters: <parameters>.\""
+    input_template = jsonencode("{AWS Config Change: Event <event> with request parameters: <parameters>.}")
   }
 }
 
