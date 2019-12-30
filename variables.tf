@@ -1,4 +1,5 @@
-variable "sns_topic_name" {
-  type        = "string"
-  description = "The name of the SNS topic to send AWS Config notifications."
+variable "sns_topic_arn" {
+  description = "The ARN of the SNS topic to send AWS Config notifications."
+  type        = string
 }
+
